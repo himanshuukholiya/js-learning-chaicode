@@ -36,4 +36,3 @@ for (const [key, value] of map) { // [] => syntax => used to differenciate b/w k
 }
 
 // Objects can't be iterated like maps using for of (there are ways to iterate objects as well)
-

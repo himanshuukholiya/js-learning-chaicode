@@ -17,4 +17,3 @@ const newNums2 = myNums
                     .filter( (num) => num > 50)
 
 console.log(newNums2) // [ 51, 61, 71, 81, 91, 101 ]
-
