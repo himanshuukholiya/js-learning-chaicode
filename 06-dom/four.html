@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit or Remove DOM elements</title>
+    <style>
+        body {
+            background-color: #282828;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+
+    // adding values
+
+    function addLanguage(langName) {
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+
+        // not the best method because here it traverses tree every time it runs 
+        // speically with large data
+    }
+    addLanguage("python")
+    addLanguage("typescript")
+
+    function addOptimizedLanguage(langName) {
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+
+        // optimized way because we are creating node and putting value
+        // we are not traversing tree
+    }
+    addOptimizedLanguage("golang")
+
+    // edit => there are many ways 
+
+    const editLang = document.querySelector('li:nth-child(2)')
+
+    // editLang.innerHTML = `mojo` => traversing trees => 1
+
+    const newli = document.createElement('li') 
+    newli.textContent = "mojo"
+
+    editLang.replaceWith(newli) // =>2
+
+    const editFirstLang = document.querySelector('li:first-child')
+    editFirstLang.outerHTML = '<li>react</li>' // => 3
+    
+    // remove 
+
+    const removeLang = document.querySelector('li:last-child')
+    removeLang.remove()
+
+</script>
+</html>

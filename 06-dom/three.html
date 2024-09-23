@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - createElement</title>
+    <style>
+        body {
+            background-color: #282828;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+
+<script>
+    
+    // creatign div using js
+
+    const firstDiv = document.createElement('div')
+    console.log(firstDiv)
+
+    firstDiv.className = 'divClass'
+    // firstDiv.id = 'divId'
+    firstDiv.id = Math.round(Math.random() * 10 + 1)
+
+    firstDiv.setAttribute('title', 'generated title')
+
+    // firstDiv.innerText = 'entering text from innerText'
+
+    const addText = document.createTextNode('entering text from createTextNode')
+    firstDiv.appendChild(addText)
+
+    document.body.appendChild(firstDiv)
+
+    firstDiv.style.backgroundColor = "green"
+    firstDiv.style.padding = "10px"
+    firstDiv.style.borderRadius = "10px"
+</script>
+</html>

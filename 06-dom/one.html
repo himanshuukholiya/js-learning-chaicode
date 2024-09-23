@@ -14,6 +14,91 @@
     <div>
         <h1 id="title" class="heading">DOM (Document Object Manupulation) learning <span style="display: none;">test text</span></h1>
         <p>Each element of HTML becomes node in tree</p>
+
+        <h3>Learning getElementById, getElementsByClassName, querySelector & querySelectorAll</h3>
+
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem, ipsum dolor.</h2>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <input type="password">
     </div>
+
+    <ul>
+        <li class = 'list-item'>one</li>
+        <li class = 'list-item'>two</li>
+        <li class = 'list-item'>three</li>
+        <li class = 'list-item'>four</li>
+    </ul>
 </body>
+
+<script>
+    
+    // targeting using id
+
+    document.getElementById('title')
+    console.log(document.getElementById('title')) // logs in browser console
+    document.getElementById('title').id
+    document.getElementById('title').class // undefined
+    document.getElementById('title').className
+    document.getElementById('title').getAttribute('id')
+
+    // changing/adding class id => setAttribute
+    
+    document.getElementById('title').setAttribute('class', 'heading test') // this will overwrite, so use carefully
+
+    const title = document.getElementById('title') // storing value inside title
+
+    console.log(title)
+
+    // styling title
+
+    title.style.backgroundColor = 'green'
+    title.style.padding = '10px'
+    title.style.borderRadius = '10px'
+
+    // getting values inside title => innerText, textContent, innerHTML
+
+    console.log(title.innerHTML) // shows complete html inside it
+    console.log(title.innerText) // it hides display none
+    console.log(title.textContent) // it shows everything inside display none
+
+    // targeting using class
+
+    document.getElementsByClassName('heading') // logs html collection
+
+    // querySelector
+
+    console.log(document.querySelector('h1'))
+    console.log(document.querySelector('#title')) // id => #
+    console.log(document.querySelector('.heading')) // class => .
+    console.log(document.querySelector('input[type="password"]')) // selecting input of password type
+    document.querySelector('p:first-child') // first paragraph
+    
+    // styling => double querySelector
+
+    const myList = document.querySelector('ul')
+    const turnGreen = myList.querySelector('li')
+    turnGreen.style.backgroundColor = 'green'
+    turnGreen.style.padding = '8px'
+
+    // querySelectorAll => logs node list
+    
+    const secondInList = document.querySelectorAll('li')
+    secondInList[1].style.color = 'red' // need to provide index
+
+    // styling => forEach => querySelectorAll
+
+    secondInList.forEach( (l) => l.style.backgroundColor = 'skyblue')
+
+    // Array conversion => class is html collection converting in array
+
+    const myTempClass = document.getElementsByClassName('list-item')
+    
+    const myTempArray = Array.from(myTempClass)
+
+    console.log(myTempArray)
+
+    myTempArray.map( (l) => l.style.color = "brown")
+
+</script>
 </html>
