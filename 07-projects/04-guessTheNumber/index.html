@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1><a href="./index.html">Digital Clock</a></h1>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="https://www.youtube.com/@HimanshuKholiya" target="_blank">Youtube Channel</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Number Guessing Game</h1>
+        <p>Try and guess a random number between 1 and 100.</p>
+        <p>You have 10 attempts to guess the right number.</p>
+        <br>
+
+        <form class="form">
+            <label for="guessField" id="guess">Guess a Number</label>
+            <input type="text" id="guessField">
+            <input type="submit" id="submit" value="Submit Guess">
+        </form>
+
+        <div class="resultParameters">
+            <p>Previous Guesses:<span class="guesses"></span></p>
+            <p>Guess Remaining:<span class="lastResult">10</span></p>
+            <p class="lowOrHigh"></p>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
