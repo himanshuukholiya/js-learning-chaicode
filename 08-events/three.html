@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async fns</title>
+</head>
+<body>
+    <h1>00:00:00</h1>
+    <button id="start">start</button>
+    <button id="stop">end</button>
+</body>
+
+<script>
+    let timer // to store the interval id
+
+    let clockStarts = () => {
+        let currentTime = new Date()
+        let hours = currentTime.getHours()
+        let minutes = currentTime.getMinutes()
+        let seconds = currentTime.getSeconds()
+        document.querySelector('h1').innerHTML = `${hours}:${minutes}:${seconds}`
+    }
+
+    // start
+    document.querySelector('#start').addEventListener('click', () => {
+        if (!timer) {
+            timer = setInterval(clockStarts, 1000)
+        }
+    })
+
+    // end 
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(timer)
+        timer = null
+    })
+</script>
+</html>

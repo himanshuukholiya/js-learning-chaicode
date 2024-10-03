@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async fns</title>
+</head>
+<body>
+    <h1>JS in synchronous language</h1>
+    <button id="stop">end</button>
+</body>
+<script>
+    /* 
+    setTimeout( () => {
+        console.log("Himanshu")
+    }, 2000)
+    */
+    // yeh hai mentos zindagi
+
+    const sayMyName = () => {
+        console.log("Himanshu")
+    }
+    setTimeout(sayMyName, 2000) // yeh hai aam zindagi
+
+    // clearTimeout() => used to stop setTimeout from happening => best usecase after an event
+    
+    const changeText = () => {
+        document.querySelector('h1').innerHTML = "JS can become asynchronous"
+    }
+    const weMakingChanges = setTimeout(changeText, 3000)
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearTimeout(weMakingChanges)
+        console.log('Stopped')
+    })
+
+</script>
+</html>
