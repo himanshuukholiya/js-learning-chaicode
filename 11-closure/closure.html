@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+<body>
+    <button id="orange">orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    // lexical scoping
+    function outer() {
+        let username = "himanshu"
+        function inner() {
+            console.log(username);
+        }
+        inner()
+    }
+    outer()
+</script>
+<script>
+    // closure => when we return function => it passes the whole lexical scope
+
+    function clickHandler(color) {
+        // document.body.style.backgroundColor = `${color}` // can't work 
+        return function () {
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+
+    document.getElementById("orange").onclick = clickHandler("orange")
+    document.getElementById("green").onclick = clickHandler("green")
+</script>
+</html>
