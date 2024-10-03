@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request & GitHub Profile Card</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #0000001a;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .profilePic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .followersCount {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .bio {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .name {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>ajax -> Asynchronous JavaScript & XML</h1>
+        <h3>Value State Description</h3>
+        <p>0	UNSENT	Client has been created. open() not called yet.</p>
+        <p>1	OPENED	open() has been called.</p>
+        <p>2	HEADERS_RECEIVED	send() has been called, and headers and status are available.</p>
+        <p>3	LOADING	Downloading; responseText holds partial data.</p>
+        <p>4	DONE	The operation is complete.</p>
+    </div>
+
+    <div id="profileCard"></div>
+</body>
+
+<script>
+    const requestURL = 'https://api.github.com/users/himanshuukholiya' // API URL
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', requestURL)
+
+    console.log(xhr.readyState) // to check whats the state
+
+    // creating github profile card
+    
+    xhr.onreadystatechange = () => { // to continiously check state
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) { 
+            const data = JSON.parse(xhr.responseText); // Parse the responseText
+            console.log(typeof data);  // Check type of data
+            console.log(data.following);  // Access the followers property
+            console.log(data)
+
+            // extracting profile pic url, name, followers count
+
+            const profilePicUrl = data.avatar_url
+            const name = data.name
+            const followersCount = data.followers
+            const bio = data.bio
+
+            // creating card
+            const profileCard = `
+                <div class="card">
+                    <img src="${profilePicUrl}" class="profilePic">
+                    <div class="name">${name}</div>
+                    <div class="bio">${bio}</div>
+                    <div class="followersCount">Followers: ${followersCount}</div>
+                </div>`
+
+
+            // adding value in html div -> 'profileCard'
+            document.querySelector('#profileCard').innerHTML = profileCard
+        }
+    }
+    xhr.send()
+</script>
+</html>
